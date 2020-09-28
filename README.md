@@ -74,11 +74,11 @@ Evaluate on 891927 Synth90k test images:
 
 - Test Loss: 0.53042
 
-| Decoded Method     | Sequence Accuracy | Prediction Time |
-|--------------------|-------------------|-----------------|
-| greedy             | 0.93873           | 0:06:36         |
-| beam_search        | 0.93892           | 1:42:45         |
-| prefix_beam_search | 0.93900           | 10:33:15        |
+| Decoded Method     | Sequence Accuracy | Prediction Time  |
+|--------------------|-------------------|------------------|
+| greedy             | 0.93873           | 0.44398 ms/image |
+| beam_search        | 0.93892           | 6.9120  ms/image |
+| prefix_beam_search | 0.93900           | 42.598  ms/image |
 
 
 ## Train your model
