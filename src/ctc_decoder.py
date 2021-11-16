@@ -54,7 +54,7 @@ def beam_search_decode(emission_log_prob, blank=0, **kwargs):
     # sum up beams to produce labels
     total_accu_log_prob = {}
     for prefix, accu_log_prob in beams:
-        labels = tuple(_reconstruct(prefix))
+        labels = tuple(_reconstruct(prefix, blank))
         # log(p1 + p2) = logsumexp([log_p1, log_p2])
         total_accu_log_prob[labels] = \
             logsumexp([accu_log_prob, total_accu_log_prob.get(labels, NINF)])
