@@ -27,6 +27,7 @@ def train_batch(crnn, data, optimizer, criterion, device):
 
     optimizer.zero_grad()
     loss.backward()
+    torch.nn.utils.clip_grad_norm_(crnn.parameters(), 5) # gradient clipping with 5
     optimizer.step()
     return loss.item()
 
