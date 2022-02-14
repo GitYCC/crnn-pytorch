@@ -78,7 +78,7 @@ def main():
     crnn.to(device)
 
     optimizer = optim.RMSprop(crnn.parameters(), lr=lr)
-    criterion = CTCLoss(reduction='sum')
+    criterion = CTCLoss(reduction='sum', zero_infinity=True)
     criterion.to(device)
 
     assert save_interval % valid_interval == 0
