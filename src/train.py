@@ -27,6 +27,7 @@ def train_batch(crnn, data, optimizer, criterion, device):
 
     optimizer.zero_grad()
     loss.backward()
+    torch.nn.utils.clip_grad_norm_(crnn.parameters(), 5) # gradient clipping with 5
     optimizer.step()
     return loss.item()
 
@@ -78,7 +79,7 @@ def main():
     crnn.to(device)
 
     optimizer = optim.RMSprop(crnn.parameters(), lr=lr)
-    criterion = CTCLoss(reduction='sum')
+    criterion = CTCLoss(reduction='sum', zero_infinity=True)
     criterion.to(device)
 
     assert save_interval % valid_interval == 0
