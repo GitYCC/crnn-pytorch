@@ -1,4 +1,4 @@
-import torch.nn as nn
+import oneflow.nn as nn
 
 
 class CRNN(nn.Module):

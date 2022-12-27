@@ -1,8 +1,8 @@
 import os
 import glob
 
-import torch
-from torch.utils.data import Dataset
+import oneflow
+from oneflow.utils.data import Dataset
 from scipy import signal
 from scipy.io import wavfile
 import cv2
@@ -69,14 +69,14 @@ class Synth90kDataset(Dataset):
         image = image.reshape((1, self.img_height, self.img_width))
         image = (image / 127.5) - 1.0
 
-        image = torch.FloatTensor(image)
+        image = oneflow.FloatTensor(image)
         if self.texts:
             text = self.texts[index]
             target = [self.CHAR2LABEL[c] for c in text]
             target_length = [len(target)]
 
-            target = torch.LongTensor(target)
-            target_length = torch.LongTensor(target_length)
+            target = oneflow.LongTensor(target)
+            target_length = oneflow.LongTensor(target_length)
             return image, target, target_length
         else:
             return image
@@ -84,7 +84,7 @@ class Synth90kDataset(Dataset):
 
 def synth90k_collate_fn(batch):
     images, targets, target_lengths = zip(*batch)
-    images = torch.stack(images, 0)
-    targets = torch.cat(targets, 0)
-    target_lengths = torch.cat(target_lengths, 0)
+    images = oneflow.stack(images, 0)
+    targets = oneflow.cat(targets, 0)
+    target_lengths = oneflow.cat(target_lengths, 0)
     return images, targets, target_lengths
