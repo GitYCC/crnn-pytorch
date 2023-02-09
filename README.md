@@ -31,7 +31,7 @@ demo/78_Novel_52433.jpg > novel
 
 This is a Pytorch implementation of a Deep Neural Network for scene text recognition. It is based on the paper ["An End-to-End Trainable Neural Network for Image-based Sequence Recognition and Its Application to Scene Text Recognition (2016), Baoguang Shi et al."](http://arxiv.org/abs/1507.05717).
 
-Blog article with more info: [https://www.ycc.idv.tw/crnn-ctc.html](https://www.ycc.idv.tw/crnn-ctc.html)
+Blog article with more info: [https://ycc.idv.tw/crnn-ctc.html](https://ycc.idv.tw/crnn-ctc.html)
 
 ![crnn_structure](misc/crnn_structure.png)
 
